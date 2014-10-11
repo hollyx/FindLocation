@@ -11,7 +11,7 @@ class GurlController {
     }
     
     def list() {
-    if (isInCountry('IE')) {
+    if (isInCountry('US')) {
         render "yes ireland"
     } else {
         render "nope ireland"
