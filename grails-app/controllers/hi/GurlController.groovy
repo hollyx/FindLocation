@@ -14,7 +14,7 @@ class GurlController {
     
     def geoIpService 
     def tryone() {
-            def defaultLocation = [latitude: 40.7141, longitude: 74.0064, countryName: "Unitad States", countryCode: "US"]
+            def defaultLocation = [latitude: 40.7141, longitude: 74.0064, countryName: "United States", countryCode: "US"]
             def message = "78.153.217.226"
             def message2 = "3.255.255.255"
             def message3 = request.remoteAddr
