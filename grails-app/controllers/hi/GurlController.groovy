@@ -13,12 +13,19 @@ class GurlController {
     }
     
     def list() {
-        if (isInCountry('IE')) {
+        def guy = "1.02.1.2"
+        if (guy.isInCountry('IE')) {
             render "ireland"
         } else {
             render "not in ireland"
         }
     }
+    
+    def doSomething() {
+        def location = geoIpService.getLocation('88.158.9.150')
+        render location
+    }
+    
     
     def getIpAddress(javax.servlet.http.HttpServletRequest request) {
         def ipAddress = request.getRemotrAddr()
@@ -46,6 +53,22 @@ class GurlController {
         }
         
         ipAddress
+    }
+    
+    def check() {
+        log.info "User agent: " + request.getHeader()
+        println "User agent: " + request.getHeader()
+        render request.getHeader()
+    }
+    
+    def trythis() {
+        def geolocation = getLocation( request.remoteAddr )
+        render geolocation
+    }
+    
+    def tryone() {
+        def message = request.remoteAddr
+        render message
     }
 
 }
