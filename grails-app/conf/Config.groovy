@@ -117,7 +117,7 @@ log4j.main = {
 }
 
 // Added by the GeoIP plugin:
-grails.plugin.geoip.data.resource = 'data/maxmind/GeoLiteCity.dat'
+grails.plugin.geoip.data.resource = '/WEB-INF/GeoLiteCity.xml'
 
 
 geoip.data.resource= "/WEB-INF/GeoLiteCity.dat"
