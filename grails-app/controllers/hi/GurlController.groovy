@@ -12,63 +12,19 @@ class GurlController {
         render message
     }
     
-    def list() {
-        def guy = "1.02.1.2"
-        if (guy.isInCountry('IE')) {
-            render "ireland"
-        } else {
-            render "not in ireland"
-        }
-    }
-    
-    def doSomething() {
-        def location = geoIpService.getLocation('88.158.9.150')
-        render location
-    }
-    
-    
-    def getIpAddress(javax.servlet.http.HttpServletRequest request) {
-        def ipAddress = request.getRemotrAddr()
-        
-        if (ipAddress && InetAddressValidator.VALIDATOR.isValid(ipAddress)) {
-            log.debug("Remote IP Address ::: " + ipAddress)
-            
-            return ipAddress
-        }
-        
-        ipAddress = request.getHeader("X-Forwarded-For")
-        
-        if(ipAddress && InetAddressValidator.VALIDATOR.isValid(ipAddress)) {
-            log.debug("Remote IP Address ::: " + ipAddress)
-            
-            return ipAddress
-        }
-        
-        ipAddress = request.getHeader("Client-IP")
-        
-        if(ipAddress && InetAddressValidator.VALIDATOR.isValid(ipAddress)) {
-            log.debug("Remote IP Address ::: " + ipAddress)
-            
-            return ipAddress
-        }
-        
-        ipAddress
-    }
-    
-    def check() {
-        log.info "User agent: " + request.getHeader()
-        println "User agent: " + request.getHeader()
-        render request.getHeader()
-    }
-    
-    def trythis() {
-        def geolocation = getLocation( request.remoteAddr )
-        render geolocation
-    }
-    
+    def geoIpService 
     def tryone() {
-        def message = request.remoteAddr
-        render message
+            def defaultLocation = [latitude: 40.7141, longitude: 74.0064, countryName: "Unitad States", countryCode: "US"]
+            def message = "78.153.217.226"
+            def message2 = "3.255.255.255"
+            def message3 = request.remoteAddr
+            def ans = geoIpService.getLocation(message3)
+            if ( ans == null) {
+                ans = defaultLocation
+            }
+        
+            def pls = ans.countryName
+            render pls
     }
 
 }
